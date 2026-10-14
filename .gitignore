@@ -1,0 +1,15 @@
+node_modules/
+.local/
+*.log
+.tooling/
+dist/
+artifacts/
+android/.gradle/
+android/local.properties
+android/**/build/
+ios/App/Pods/
+ios/**/build/
+*.keystore
+*.jks
+playwright-report/
+test-results/

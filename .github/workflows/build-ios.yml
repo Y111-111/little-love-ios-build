@@ -1,0 +1,57 @@
+name: Build iPhone IPA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-ios.yml'
+      - 'ios/**'
+      - 'mobile/**'
+      - 'public/**'
+      - 'scripts/build-ios.sh'
+      - 'scripts/build-mobile.mjs'
+      - 'docs/IOS-INSTALL.md'
+      - 'package*.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: iphone-ipa
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Standard hosted Mac runner; not a paid large/xlarge machine.
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - name: Download project source
+        uses: actions/checkout@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Compile and verify unsigned iPhone package
+        run: bash scripts/build-ios.sh
+      - name: Save IPA and installation instructions
+        uses: actions/upload-artifact@v4
+        with:
+          name: little-love-ios-v1.0-unsigned
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            artifacts/little-love-ios-v1.0-unsigned.ipa
+            artifacts/little-love-ios-v1.0-unsigned.ipa.sha256
+            artifacts/ios-build-info.txt
+            artifacts/IOS-INSTALL.md
+      - name: Save compilation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: iphone-build-log
+          if-no-files-found: ignore
+          retention-days: 7
+          path: artifacts/ios-build.log

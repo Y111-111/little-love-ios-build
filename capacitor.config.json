@@ -1,0 +1,9 @@
+{
+  "appId": "cn.littlelove.mail",
+  "appName": "小小心意",
+  "webDir": "dist",
+  "backgroundColor": "#fbf6ef",
+  "server": { "androidScheme": "https" },
+  "android": { "allowMixedContent": false },
+  "ios": { "contentInset": "automatic", "preferredContentMode": "mobile" }
+}

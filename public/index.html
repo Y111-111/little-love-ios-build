@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#fbf6ef"><meta name="description" content="把想念点成一份小小心意，记录我们的每一个日常。">
+  <title>小小心意 · 给你的日常</title><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/style.css"><script src="/period-analysis.js" defer></script><script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">♡</span><span>小小心意<small>A LITTLE LOVE, EVERY DAY</small></span></a>
+      <div class="side-caption">属于我们的日常</div>
+      <nav aria-label="主导航">
+        <button class="nav-item active" data-page="shop"><span>♡</span>心意小店</button>
+        <button class="nav-item" data-page="memories"><span>▧</span>我们的回忆</button>
+        <button class="nav-item" data-page="dates"><span>◷</span>值得记住的日子</button>
+        <button class="nav-item" data-page="settings"><span>⚙</span>小店设置</button>
+      </nav>
+      <div class="sidebar-note"><span>✿</span><p>平凡的日子里，<br>也有好多次想爱你。</p><small>FOR YOU, ALWAYS.</small></div>
+      <div class="local-label"><i></i> 私人试用版 · 记录保存在本地</div>
+    </aside>
+    <main>
+      <header class="topbar"><span id="today"></span><span class="top-status" id="connection">正在连接小店…</span></header>
+      <section id="page-shop" class="page">
+        <div class="page-heading"><div><span class="eyebrow">THE LOVE MENU</span><h1>今天，也想对你好一点。</h1><p>把没说出口的喜欢，点成一份小小心意。</p></div><span class="heading-flower">✿</span></div>
+        <div class="hero">
+          <div class="hero-copy"><span class="pill">两个人的浪漫，从一份心意开始</span><h2>思念不用排队，<br>爱意<em>慢慢来。</em></h2><p>一封来自你的邮件，<br>让对方的普通一天变得特别。</p><button class="primary" id="hero-order">挑一份心意 <span>↗</span></button></div>
+          <div class="love-illustration" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span class="spark spark-one">✦</span><span class="spark spark-two">✧</span><span class="floating-heart">♡</span><div class="envelope"><div class="envelope-flap"></div><div class="letter"><span>Dear you,</span><b>♥</b><i>今天也在想你</i></div><div class="envelope-front"></div><div class="stamp">♡</div></div><div class="illustration-caption">a little note, a lot of love.</div></div>
+        </div>
+        <div class="stats"><div><span class="stat-icon">♥</span><div><small>攒下的喜欢</small><strong><span id="hearts">0</span> <em>颗心心</em></strong></div></div><div><span class="stat-icon clock">◷</span><div><small>下一份心意</small><strong id="countdown">随时可以送出</strong></div></div><div><span class="stat-icon">↗</span><div><small>寄给那个特别的人</small><strong id="recipient-label">还没设置收件人</strong></div></div></div>
+        <div class="section-title" id="menu"><div><h2>今日心意菜单 <span>用喜欢下单</span></h2><p>每次成功送出 +1 颗心心，10 分钟后可再次下单。</p></div><span class="menu-tag">MADE WITH LOVE</span></div>
+        <div class="menu-grid" id="menu-grid"></div>
+        <div class="section-title history-title"><h2>刚刚送出的心意</h2><span class="subtle">小小的表达，也值得记住</span></div><div id="order-history" class="history"></div>
+      </section>
+      <section id="page-memories" class="page" hidden>
+        <div class="page-heading"><div><span class="eyebrow">OUR LITTLE MOMENTS</span><h1>把日常，收藏起来。</h1><p>一次散步、一顿晚饭，都是我们的故事。</p></div><button class="primary" id="add-memory">＋ 记一件小事</button></div>
+        <div class="soft-banner">✿ 不一定要特别盛大，和你一起就值得记住。</div><div id="memory-list" class="memory-grid"></div>
+      </section>
+      <section id="page-dates" class="page" hidden>
+        <div class="page-heading"><div><span class="eyebrow">DAYS TO REMEMBER</span><h1>有些日子，自带心动。</h1><p>记住我们的开始，也期待下一次庆祝。</p></div><button class="primary" id="add-date">＋ 添加纪念日</button></div>
+        <div class="soft-banner">♡ 记住日子，也记住她的小习惯。到期事项会在这里提示，关闭网页后暂不推送。</div>
+        <div id="care-summary" class="care-summary"></div>
+        <div class="section-title"><h2>我们的纪念日</h2></div><div id="date-list" class="date-grid"></div>
+        <div class="section-title care-heading"><div><h2>生理期记录</h2><p>记录实际开始与结束日期，以及这几天需要的照顾。</p></div><div class="period-actions"><button class="secondary" id="analyze-periods">分析记录 ↗</button><button class="secondary" data-add-care="periods">＋ 记一次</button></div></div><div id="period-list" class="care-grid"></div>
+        <div class="section-title care-heading"><div><h2>提醒我做的事</h2><p>想为宝宝做的事，一件件记住。</p></div><button class="secondary" data-add-care="tasks">＋ 添加待办</button></div><div id="task-list" class="care-grid"></div>
+        <div class="section-title care-heading"><div><h2>宝宝的小习惯</h2><p>喜欢、讨厌、生理期偏好，还有任何值得记住的细节。</p></div><button class="secondary" data-add-care="notes">＋ 记个偏好</button></div><div id="note-list" class="care-grid"></div>
+      </section>
+      <section id="page-settings" class="page" hidden>
+        <div class="page-heading"><div><span class="eyebrow">MAKE IT YOURS</span><h1>让心意，找到你。</h1><p>填好两个人的邮箱，之后点击下单就能自动寄出。</p></div></div>
+        <div class="settings-grid"><form id="settings-form" class="panel"><h2>QQ 邮箱设置</h2><p class="subtle" id="config-help">请在运行发信助手的电脑上填写。设置由电脑的 Windows 账号加密保存，重启后自动读取。</p><label>你的称呼<input name="name" maxlength="30" placeholder="例如：你的小熊" autocomplete="nickname"></label><label>你的 QQ 邮箱<input name="sender" type="email" required placeholder="123456789@qq.com" autocomplete="off"></label><label>对方的邮箱（可随时修改）<input name="recipient" type="email" required maxlength="254" placeholder="name@163.com 或 name@m.scnu.edu.cn" autocomplete="off"></label><label>QQ 邮箱授权码<input name="auth" type="password" required minlength="16" maxlength="16" placeholder="16 位字母，不是 QQ 密码" autocomplete="off"></label><button class="primary" type="submit">保存邮箱设置</button><p class="form-hint">保存不会发送测试邮件。下一次下单时才会验证授权是否成功。</p></form>
+        <div class="settings-side"><div class="panel"><span class="guide-icon">✉</span><h2>第一次配置？</h2><ol><li>在电脑浏览器登录 QQ 邮箱。</li><li>进入设置，找到第三方客户端或 SMTP 服务。</li><li>按邮箱提示开启服务，生成授权码。</li><li>把授权码填写在左侧，保存即可。</li></ol><p class="form-hint">设置一次后，重启可继续使用；以后可修改收件人。不要把授权码发给其他人。</p></div><div class="panel"><h2>留一份回忆备份</h2><p class="subtle">回忆文字、日期和生活记录保存在此浏览器，照片保存在电脑。备份会包含照片，不包含邮箱授权码。</p><div class="button-row"><button class="secondary" id="export-data">导出备份</button><button class="secondary" id="import-data">导入备份</button></div><input id="backup-input" type="file" accept="application/json" hidden></div></div></div>
+      </section>
+      <footer>小小心意 <span>♡</span> 愿每一份想念，都有回音。</footer>
+    </main>
+  </div>
+  <dialog id="order-dialog"><form id="order-form"><button type="button" class="close-dialog" aria-label="关闭">×</button><span class="dialog-eyebrow">A SPECIAL DELIVERY</span><div class="order-emoji" id="order-emoji"></div><h2 id="order-title"></h2><p class="subtle" id="order-description"></p><label>再捎一句话 <span class="optional">选填</span><textarea name="note" maxlength="1000" rows="3" placeholder="今天有没有好好吃饭？我想你啦。"></textarea></label><div class="order-summary"><span>这一份心意</span><strong>＋1 颗心心 ♡</strong></div><p class="form-hint">点击后将直接发送到对方邮箱。成功后开始 10 分钟等待。</p><button type="submit" class="primary full" id="send-button">把心意寄出去 ↗</button></form></dialog>
+  <dialog id="memory-dialog"><form id="memory-form"><button type="button" class="close-dialog" aria-label="关闭">×</button><span class="dialog-eyebrow">KEEP THIS MOMENT</span><h2>记一件我们的小事</h2><label>给回忆起个名字<input name="title" required maxlength="80" placeholder="第一次一起看海"></label><label>发生在哪一天<input name="date" type="date" required></label><label>想记住的细节<textarea name="text" rows="4" maxlength="3000" placeholder="那天的天气、说过的话，还有当时的心情…"></textarea></label><label>添加一张照片 <span class="optional">选填</span><input name="photo" type="file" accept="image/jpeg,image/png,image/webp"></label><img id="photo-preview" class="photo-preview" alt="所选回忆照片预览" hidden><button type="button" id="remove-photo" class="secondary photo-remove" hidden>移除这张照片</button><p id="photo-status" class="form-hint" role="status">照片保留宽高尺寸，适当降低画质，保存到电脑文件夹。支持 JPG、PNG、WebP。</p><button type="submit" class="primary full">收藏这份回忆</button></form></dialog>
+  <dialog id="date-dialog"><form id="date-form"><button type="button" class="close-dialog" aria-label="关闭">×</button><span class="dialog-eyebrow">SAVE THE DATE</span><h2>一个值得记住的日子</h2><label>纪念日名称<input name="title" required maxlength="80" placeholder="我们在一起的日子"></label><label>日期<input name="date" type="date" required></label><label class="checkbox-label"><input name="yearly" type="checkbox" checked> 每年都庆祝这一天</label><button type="submit" class="primary full">记住这个日子</button></form></dialog>
+  <dialog id="memory-view" class="memory-view"><button type="button" class="close-dialog" aria-label="关闭">×</button><span class="dialog-eyebrow">OUR LITTLE MOMENT</span><h2 id="memory-view-title"></h2><p id="memory-view-date" class="card-date"></p><img id="memory-view-photo" alt="回忆照片" hidden><p id="memory-view-text" class="memory-text"></p><div class="button-row"><button class="primary" id="edit-memory">编辑这份回忆</button><button class="secondary" id="download-photo" hidden>保存照片</button></div></dialog>
+  <dialog id="care-dialog"><form id="care-form"><button type="button" class="close-dialog" aria-label="关闭">×</button><span class="dialog-eyebrow">I CARE ABOUT YOU</span><h2 id="care-form-title"></h2>
+    <label id="care-title-label">标题<input name="title" maxlength="80" placeholder="例如：给宝宝买喜欢的甜点"></label>
+    <label id="care-category-label" hidden>分类<select name="category"><option value="喜欢">喜欢</option><option value="不喜欢">不喜欢</option><option value="生理期偏好">生理期偏好</option><option value="饮食">饮食</option><option value="日常习惯">日常习惯</option><option value="其他">其他</option></select></label>
+    <label id="care-start-label">日期<input name="start" type="date"></label><label id="care-end-label" hidden>结束日期 <span class="optional">未结束可留空</span><input name="end" type="date"></label>
+    <label>想记住的细节<textarea name="text" maxlength="3000" rows="4" placeholder="例如：生理期喜欢吃什么、不喜欢什么，或需要我做的事…"></textarea></label><p id="care-hint" class="form-hint"></p><button type="submit" class="primary full">保存记录</button>
+  </form></dialog>
+  <dialog id="period-analysis-dialog" class="analysis-dialog"><button type="button" class="close-dialog" aria-label="关闭分析">×</button><span class="dialog-eyebrow">UNDERSTAND THE RECORDS</span><h2>生理期记录分析</h2><p class="subtle">根据你填写的日期，在当前设备计算。</p><div id="period-analysis-content"></div><p class="form-hint analysis-footnote">持续天数包含开始日和结束日。间隔按相邻已记录的开始日期计算，漏记会影响统计。这里只描述记录，不判断健康状况，也不预测下次日期。</p></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
